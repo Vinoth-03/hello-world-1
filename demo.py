@@ -1,23 +1,25 @@
-name: Pylint
+"""Module to calculate the area of a circle."""
 
-on: [push]
+def area_of_circle(radius):
+    """
+    Calculate the area of a circle.
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.8", "3.9", "3.10"]
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pylint
-    - name: Analysing the code with pylint
-      run: |
-        pylint $(git ls-files '*.py')
+    Args:
+        radius (float): Radius of the circle.
+
+    Returns:
+        float: Area of the circle.
+    """
+    pi = 3.14
+    return pi * radius * radius
+
+
+def main():
+    """Main function to print area of a circle with radius 10."""
+    r = 10
+    area = area_of_circle(r)
+    print(area)
+
+
+if __name__ == "__main__":
+    main()
